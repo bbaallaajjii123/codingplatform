@@ -1,0 +1,27 @@
+[2025-06-21T10:33:41.189Z] 🚀 Starting script execution...
+[2025-06-21T10:33:41.205Z] 🚀 STARTING SAMPLE PROBLEMS SCRIPT
+[2025-06-21T10:33:41.206Z] 📝 Output will be saved to: script-output.log
+[2025-06-21T10:33:41.207Z] Step 1: Logging in as admin...
+[2025-06-21T10:33:42.040Z] ✅ Admin logged in successfully
+[2025-06-21T10:33:42.041Z] Step 2: Creating teacher using admin endpoint...
+[2025-06-21T10:33:42.077Z] ℹ️ Teacher already exists, logging in...
+[2025-06-21T10:33:42.610Z] ✅ Teacher logged in successfully
+[2025-06-21T10:33:42.611Z] Step 3: Adding sample problems...
+[2025-06-21T10:33:42.612Z] 
+--- Problem 1: Sum of Two Numbers ---
+[2025-06-21T10:33:42.662Z] ✅ SUCCESS!
+[2025-06-21T10:33:42.664Z] 📋 Response: {
+  "message": "Problem created successfully.",
+  "problem": {
+    "id": "68568a86078d0b8947c96b36",
+    "title": "Sum of Two Numbers",
+    "difficulty": "Easy",
+    "category": "Mathematics"
+  }
+}
+[2025-06-21T10:33:42.675Z] 
+--- Problem 2: Reverse a String ---
+[2025-06-21T10:33:42.747Z] ❌ FAILED: {"error":"Server error while creating problem."}
+[2025-06-21T10:33:42.749Z] 
+--- Problem 3: Find Maximum ---
+[2025-06-21T10:33:42.792Z] ✅ SUCCESS!

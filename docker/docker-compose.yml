@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:6.0
+    container_name: programming-platform-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: programming-platform
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - app-network
+
+  # Redis (optional, for caching)
+  redis:
+    image: redis:7-alpine
+    container_name: programming-platform-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+
+  # Backend API Server
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    container_name: programming-platform-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      PORT: 5051
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/programming-platform?authSource=admin
+      JWT_SECRET: your-super-secret-jwt-key-change-this-in-production
+      CLIENT_URL: http://localhost:3051
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "5051:5051"
+    volumes:
+      - ../server:/app/server
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - app-network
+
+  # Frontend React App
+  frontend:
+    build:
+      context: ../client
+      dockerfile: ../docker/Dockerfile.frontend
+    container_name: programming-platform-frontend
+    restart: unless-stopped
+    environment:
+      REACT_APP_API_URL: http://localhost:5051/api
+    ports:
+      - "3051:3051"
+    volumes:
+      - ../client:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge 

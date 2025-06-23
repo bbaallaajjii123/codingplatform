@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Two Sum",
+    "description": "Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.",
+    "difficulty": "Easy",
+    "category": "Arrays",
+    "tags": ["array", "hash-table"],
+    "points": 10,
+    "timeLimit": 1000,
+    "memoryLimit": 128,
+    "sampleInput": "nums = [2,7,11,15], target = 9",
+    "sampleOutput": "[0,1]",
+    "constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
+    "hints": [
+      "Try using a hash table to store the numbers you've seen so far.",
+      "For each number, check if its complement (target - number) exists in the hash table."
+    ],
+    "testCases": [
+      {
+        "input": "4\n2 7 11 15\n9",
+        "expectedOutput": "0 1",
+        "isHidden": false
+      },
+      {
+        "input": "3\n3 2 4\n6",
+        "expectedOutput": "1 2",
+        "isHidden": false
+      },
+      {
+        "input": "2\n3 3\n6",
+        "expectedOutput": "0 1",
+        "isHidden": false
+      },
+      {
+        "input": "5\n1 5 8 12 15\n20",
+        "expectedOutput": "2 4",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Valid Parentheses",
+    "description": "Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid. An input string is valid if:\n\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.",
+    "difficulty": "Easy",
+    "category": "Stacks",
+    "tags": ["stack", "string"],
+    "points": 15,
+    "timeLimit": 1000,
+    "memoryLimit": 128,
+    "sampleInput": "s = \"()\"",
+    "sampleOutput": "true",
+    "constraints": "- 1 <= s.length <= 10^4\n- s consists of parentheses only '()[]{}'",
+    "hints": [
+      "Use a stack to keep track of opening brackets.",
+      "When you encounter a closing bracket, check if it matches the top of the stack."
+    ],
+    "testCases": [
+      {
+        "input": "()",
+        "expectedOutput": "true",
+        "isHidden": false
+      },
+      {
+        "input": "()[]{}",
+        "expectedOutput": "true",
+        "isHidden": false
+      },
+      {
+        "input": "(]",
+        "expectedOutput": "false",
+        "isHidden": false
+      },
+      {
+        "input": "([)]",
+        "expectedOutput": "false",
+        "isHidden": true
+      },
+      {
+        "input": "{[]}",
+        "expectedOutput": "true",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Maximum Subarray",
+    "description": "Given an integer array `nums`, find the subarray with the largest sum, and return its sum.",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "tags": ["array", "divide-and-conquer", "dynamic-programming"],
+    "points": 25,
+    "timeLimit": 1000,
+    "memoryLimit": 128,
+    "sampleInput": "nums = [-2,1,-3,4,-1,2,1,-5,4]",
+    "sampleOutput": "6",
+    "constraints": "- 1 <= nums.length <= 10^5\n- -10^4 <= nums[i] <= 10^4",
+    "hints": [
+      "Think about what happens when you add a negative number to a positive sum.",
+      "You can solve this in O(n) time with O(1) space using Kadane's algorithm."
+    ],
+    "testCases": [
+      {
+        "input": "9\n-2 1 -3 4 -1 2 1 -5 4",
+        "expectedOutput": "6",
+        "isHidden": false
+      },
+      {
+        "input": "1\n1",
+        "expectedOutput": "1",
+        "isHidden": false
+      },
+      {
+        "input": "5\n5 4 -1 7 8",
+        "expectedOutput": "23",
+        "isHidden": false
+      },
+      {
+        "input": "3\n-1 -2 -3",
+        "expectedOutput": "-1",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Reverse Linked List",
+    "description": "Given the head of a singly linked list, reverse the list, and return the reversed list.",
+    "difficulty": "Easy",
+    "category": "Linked Lists",
+    "tags": ["linked-list", "recursion"],
+    "points": 20,
+    "timeLimit": 1000,
+    "memoryLimit": 128,
+    "sampleInput": "head = [1,2,3,4,5]",
+    "sampleOutput": "[5,4,3,2,1]",
+    "constraints": "- The number of nodes in the list is the range [0, 5051].\n- -5051 <= Node.val <= 5051",
+    "hints": [
+      "You can solve this iteratively or recursively.",
+      "For the iterative approach, you'll need three pointers: previous, current, and next."
+    ],
+    "testCases": [
+      {
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "5 4 3 2 1",
+        "isHidden": false
+      },
+      {
+        "input": "2\n1 2",
+        "expectedOutput": "2 1",
+        "isHidden": false
+      },
+      {
+        "input": "0",
+        "expectedOutput": "",
+        "isHidden": false
+      },
+      {
+        "input": "3\n1 2 3",
+        "expectedOutput": "3 2 1",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Binary Tree Inorder Traversal",
+    "description": "Given the root of a binary tree, return the inorder traversal of its nodes' values.",
+    "difficulty": "Easy",
+    "category": "Trees",
+    "tags": ["tree", "depth-first-search", "binary-tree"],
+    "points": 15,
+    "timeLimit": 1000,
+    "memoryLimit": 128,
+    "sampleInput": "root = [1,null,2,3]",
+    "sampleOutput": "[1,3,2]",
+    "constraints": "- The number of nodes in the tree is in the range [0, 100].\n- -100 <= Node.val <= 100",
+    "hints": [
+      "Inorder traversal visits nodes in the order: left subtree, root, right subtree.",
+      "You can solve this recursively or iteratively using a stack."
+    ],
+    "testCases": [
+      {
+        "input": "3\n1 null 2 3",
+        "expectedOutput": "1 3 2",
+        "isHidden": false
+      },
+      {
+        "input": "0",
+        "expectedOutput": "",
+        "isHidden": false
+      },
+      {
+        "input": "1\n1",
+        "expectedOutput": "1",
+        "isHidden": false
+      },
+      {
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3",
+        "isHidden": true
+      }
+    ]
+  }
+] 
